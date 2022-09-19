@@ -10,18 +10,23 @@ api:
   allowCrossOrigin: true
   key: B508534ED20348F090B4D0AD637D3660
 appearance:
-  name: Julia Pro Dual
+  name: Volterra 400 Dual
 plugins:
-  Julia2018FilamentSensor:
+  VolterraServices:
     _config_version: 2
-    contact_door: '0'
+    contact_door_sensor: '0'
     contact_extruder0: '0'
     contact_extruder1: '0'
-    enabled_door: '0'
+    enabled_door_sensor: '0'
     enabled_extruder0: '1'
-    enabled_extruder1: '0'
+    enabled_extruder1: '1'
     pause_print: '1'
     sensor_enabled: '1'
+  JuliaTowerLight:
+    delay_off: '500'
+    delay_on: '500'
+    strobe: '0'
+    tower_enabled: '1'
   Julia2018PrintRestore:
     _config_version: 2
   announcements:
@@ -95,8 +100,8 @@ printerProfiles:
       sharedNozzle: false
     heatedBed: true
     id: _default
-    model: Fracktal Works Julia Series
-    name: Julia Pro Dual
+    model: Fracktal Works Volterra Series
+    name: Volterra 400 Dual
     volume:
       custom_box: false
       depth: 400.0

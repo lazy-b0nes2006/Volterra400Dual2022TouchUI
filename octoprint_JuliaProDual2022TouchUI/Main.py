@@ -345,6 +345,9 @@ class MainUiClass(QtWidgets.QMainWindow, mainGUI.Ui_MainWindow):
             self.setNewToolZOffsetFromCurrentZBool = False
             self.setActiveExtruder(0)
 
+            self.dialog_doorlock = None
+            self.dialog_filamentsensor = None
+
 
             for spinbox in self.findChildren(QtWidgets.QSpinBox):
                 lineEdit = spinbox.lineEdit()
@@ -399,6 +402,8 @@ class MainUiClass(QtWidgets.QMainWindow, mainGUI.Ui_MainWindow):
         self.QtSocket.z_probing_failed_signal.connect(self.showProbingFailed)
         self.QtSocket.tool_offset_signal.connect(self.getToolOffset)
 
+        #Note: Not included Door Handaling events, Check Volterra400TouchUI for information about how to implement
+
         # Text Input events
         self.wifiPasswordLineEdit.clicked_signal.connect(lambda: self.startKeyboard(self.wifiPasswordLineEdit.setText))
         self.ethStaticIpLineEdit.clicked_signal.connect(lambda: self.ethShowKeyboard(self.ethStaticIpLineEdit))
@@ -451,6 +456,26 @@ class MainUiClass(QtWidgets.QMainWindow, mainGUI.Ui_MainWindow):
         self.toolOffsetZBackButton.pressed.connect(lambda: self.stackedWidget.setCurrentWidget(self.calibratePage))
         self.toolOffsetXYButton.pressed.connect(self.updateToolOffsetXY)
         self.toolOffsetZButton.pressed.connect(self.updateToolOffsetZ)
+
+        self.testPrintsButton.pressed.connect(lambda: self.stackedWidget.setCurrentWidget(self.testPrintsPage1))
+        self.testPrintsNextButton.pressed.connect(lambda: self.stackedWidget.setCurrentWidget(self.testPrintsPage2))
+        self.testPrintsBackButton.pressed.connect(lambda: self.stackedWidget.setCurrentWidget(self.calibratePage))
+        self.testPrintsCancelButton.pressed.connect(lambda: self.stackedWidget.setCurrentWidget(self.calibratePage))
+        self.dualCaliberationPrintButton.pressed.connect(
+            lambda: self.testPrint(str(self.testPrintsTool0SizeComboBox.currentText()).replace('.', ''),
+                                   str(self.testPrintsTool1SizeComboBox.currentText()).replace('.', ''), 'dualCalibration'))
+        self.bedLevelPrintButton.pressed.connect(
+            lambda: self.testPrint(str(self.testPrintsTool0SizeComboBox.currentText()).replace('.', ''),
+                                   str(self.testPrintsTool1SizeComboBox.currentText()).replace('.', ''), 'bedLevel'))
+        self.movementTestPrintButton.pressed.connect(
+            lambda: self.testPrint(str(self.testPrintsTool0SizeComboBox.currentText()).replace('.', ''),
+                                   str(self.testPrintsTool1SizeComboBox.currentText()).replace('.', ''), 'movementTest'))
+        self.singleNozzlePrintButton.pressed.connect(
+            lambda: self.testPrint(str(self.testPrintsTool0SizeComboBox.currentText()).replace('.', ''),
+                                   str(self.testPrintsTool1SizeComboBox.currentText()).replace('.', ''), 'dualTest'))
+        self.dualNozzlePrintButton.pressed.connect(
+            lambda: self.testPrint(str(self.testPrintsTool0SizeComboBox.currentText()).replace('.', ''),
+                                   str(self.testPrintsTool1SizeComboBox.currentText()).replace('.', ''), 'singleTest'))
 
         # PrintLocationScreen
         self.printLocationScreenBackButton.pressed.connect(lambda: self.stackedWidget.setCurrentWidget(self.MenuPage))
@@ -506,7 +531,18 @@ class MainUiClass(QtWidgets.QMainWindow, mainGUI.Ui_MainWindow):
         self.toolToggleMotionButton.clicked.connect(self.selectToolMotion)
         self.controlBackButton.pressed.connect(lambda: self.stackedWidget.setCurrentWidget(self.homePage))
         self.setToolTempButton.pressed.connect(self.setToolTemp)
+        self.tool180PreheatButton.pressed.connect(lambda: octopiclient.gcode(command='M104 T1 S180') if self.toolToggleTemperatureButton.isChecked() else octopiclient.gcode(command='M104 T0 S180'))
+        #self.tool220PreheatButton.pressed.connect(lambda: octopiclient.gcode(command='M104 T1 S220') if self.toolToggleTemperatureButton.isChecked() else octopiclient.gcode(command='M104 T0 S220'))
+        self.tool250PreheatButton.pressed.connect(lambda: octopiclient.gcode(command='M104 T1 S250') if self.toolToggleTemperatureButton.isChecked() else octopiclient.gcode(command='M104 T0 S250'))
         self.setBedTempButton.pressed.connect(lambda: octopiclient.setBedTemperature(self.bedTempSpinBox.value()))
+        self.bed60PreheatButton.pressed.connect(lambda: octopiclient.setBedTemperature(target=60))
+        self.bed100PreheatButton.pressed.connect(lambda: octopiclient.setBedTemperature(target=100))
+        self.setChamberTempButton.pressed.connect(lambda: octopiclient.gcode(command='M104 T2 S' + str(self.chamberTempSpinBox.value())))
+        self.chamber40PreheatButton.pressed.connect(lambda: octopiclient.gcode(command='M104 T2 S40'))
+        self.chamber70PreheatButton.pressed.connect(lambda: octopiclient.gcode(command='M041 T2 S70'))
+        self.setFilboxTempButton.pressed.connect(lambda: octopiclient.gcode(command='M104 T3 S' + str(self.filboxTempSpinBox.value())))
+        self.filbox30PreheatButton.pressed.connect(lambda: octopiclient.gcode(command='M104 T3 S30'))
+        self.filbox40PreheatButton.pressed.connect(lambda: octopiclient.gcode(command='M104 T3 S40'))
         self.setFlowRateButton.pressed.connect(lambda: octopiclient.flowrate(self.flowRateSpinBox.value()))
         self.setFeedRateButton.pressed.connect(lambda: octopiclient.feedrate(self.feedRateSpinBox.value()))
 
@@ -736,6 +772,59 @@ class MainUiClass(QtWidgets.QMainWindow, mainGUI.Ui_MainWindow):
             else:
                 if dialog.WarningOk(self, "Door opened"):
                     return
+
+    ''' +++++++++++++++++++++++++++ Volterra VAS +++++++++++++++++++++++++++++++++++++ '''
+
+    def doorLock(self):
+        '''
+        function that toggles locking and unlocking the front door
+        :return:
+        '''
+        octopiclient.overrideDoorLock()
+
+    def doorLockMsg(self, data):
+        if "msg" not in data:
+            return
+
+        msg = data["msg"]
+
+        if self.dialog_doorlock:
+            self.dialog_doorlock.close()
+            self.dialog_doorlock = None
+
+        if msg is not None:
+            self.dialog_doorlock = dialog.dialog(self, msg, icon="exclamation-mark.png")
+            if self.dialog_doorlock.exec_() == QtGui.QMessageBox.Ok:
+                self.dialog_doorlock = None
+                return
+
+    def doorLockHandler(self, data):
+        door_lock_disabled = False
+        door_lock = False
+        # door_sensor = False
+        # door_lock_override = False
+
+        if 'door_lock' in data:
+            door_lock_disabled = data["door_lock"] == "disabled"
+            door_lock = data["door_lock"] == 1
+        # if 'door_sensor' in data:
+        #     door_sensor = data["door_sensor"] == 1
+        # if 'door_lock_override' in data:
+        #     door_lock_override = data["door_lock_override"] == 1
+
+        # if self.dialog_doorlock:
+        #     self.dialog_doorlock.close()
+        #     self.dialog_doorlock = None
+
+        self.doorLockButton.setVisible(not door_lock_disabled)
+        if not door_lock_disabled:
+            # self.doorLockButton.setChecked(not door_lock)
+            self.doorLockButton.setText('Lock Door' if not door_lock else 'Unlock Door')
+
+            icon = 'doorLock' if not door_lock else 'doorUnlock'
+            self.doorLockButton.setIcon(QtGui.QIcon(_fromUtf8("templates/img/" + icon + ".png")))
+        else:
+            return
 
     ''' +++++++++++++++++++++++++++ Firmware Update+++++++++++++++++++++++++++++++++++ '''
 
@@ -1893,6 +1982,43 @@ class MainUiClass(QtWidgets.QMainWindow, mainGUI.Ui_MainWindow):
         octopiclient.gcode(command='M104 S0')
         octopiclient.gcode(command='M104 T1 S0')
 
+    def testPrint(self,tool0Diameter,tool1Diameter,gcode):
+        '''
+        Prints a test print
+        :param tool0Diameter: Diameter of tool 0 nozzle.04,06 or 08
+        :param tool1Diameter: Diameter of tool 1 nozzle.40,06 or 08
+        :param gcode: type of gcode to print, dual nozzle calibration, bed leveling, movement or samaple prints in
+        single and dual. bedLevel, dualCalibration, movementTest, dualTest, singleTest
+        :return:
+        '''
+        if gcode is 'bedLevel':
+            self.printFromPath('gcode/' + tool0Diameter + '_BedLeveling.gcode', True)
+        elif gcode is 'dualCalibration':
+            self.printFromPath(
+                'gcode/' + tool0Diameter + '_' + tool1Diameter + '_dual_extruder_calibration_Volterra.gcode',
+                True)
+        elif gcode is 'movementTest':
+            self.printFromPath('gcode/movementTest.gcode', True)
+        elif gcode is 'dualTest':
+            self.printFromPath(
+                'gcode/' + tool0Diameter + '_' + tool1Diameter + '_Fracktal_logo_Volterra.gcode',
+                True)
+        elif gcode is 'singleTest':
+            self.printFromPath('gcode/' + tool0Diameter + '_Fracktal_logo_Volterra.gcode',True)
+
+        else:
+            print("gcode not found")
+
+    def printFromPath(self,path,prnt=True):
+        '''
+        Transfers a file from a specific to octoprint's watched folder so that it gets automatically detected by Octoprint.
+        Warning: If the file is read-only, octoprint API for reading the file crashes.
+        '''
+
+        self.uploadThread = ThreadFileUpload(path, prnt=prnt)
+        self.uploadThread.start()
+        if prnt:
+            self.stackedWidget.setCurrentWidget(self.homePage)
     ''' +++++++++++++++++++++++++++++++++++Keyboard++++++++++++++++++++++++++++++++ '''
 
     def startKeyboard(self, returnFn, onlyNumeric=False, noSpace=False, text=""):
@@ -2048,7 +2174,7 @@ class QtWebsocket(QtCore.QThread):
                 self.connected_signal.emit()
                 print("connected")
         if "plugin" in data:
-            if data["plugin"]["plugin"] == 'Julia2018FilamentSensor':
+            if data["plugin"]["plugin"] == 'VolterraServices':
                  self.filament_sensor_triggered_signal.emit(data["plugin"]["data"])
 
             if data["plugin"]["plugin"] == 'JuliaFirmwareUpdater':
@@ -2109,8 +2235,12 @@ class QtWebsocket(QtCore.QThread):
                                     'tool1Actual': temp(data, "tool1", "actual"),
                                     'tool1Target': temp(data, "tool1", "target"),
                                     'bedActual': temp(data, "bed", "actual"),
-                                    'bedTarget': temp(data, "bed", "target")}
-                    self.temperatures_signal.emit(temperatures)
+                                    'bedTarget': temp(data, "bed", "target"),
+                                    'chamberActual': temp(data, "tool2", "actual"),
+                                    'chamberTarget': temp(data, "tool2", "target"),
+                                    'filboxActual': temp(data, "tool3", "actual"),
+                                    'filboxTarget': temp(data, "tool3", "target")}
+                    self.emit(QtCore.SIGNAL('TEMPERATURES'), temperatures)
                 except KeyError:
                     # temperatures = {'tool0Actual': 0,
                     #                 'tool0Target': 0,
@@ -2121,8 +2251,6 @@ class QtWebsocket(QtCore.QThread):
                     pass
 
     def on_open(self,ws):
-        self.authenticate()
-
     def on_close(self, ws):
         pass
 

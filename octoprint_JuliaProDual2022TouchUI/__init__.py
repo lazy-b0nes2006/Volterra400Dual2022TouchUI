@@ -37,7 +37,7 @@ del get_versions
 # 			self.is_running = False
 
 
-class JuliaProDual2022TouchUI(octoprint.plugin.StartupPlugin):
+class Volterra400Dual2022TouchUI(octoprint.plugin.StartupPlugin):
     def on_after_startup(self):
         # self.resetInetrval = int(self._settings.get(["resetInetrval"]))
         self._logger.info("TouchUI Plugin Started")
@@ -46,29 +46,29 @@ class JuliaProDual2022TouchUI(octoprint.plugin.StartupPlugin):
 
     def get_update_information(self):
         return dict(
-            JuliaProDual2022TouchUI=dict(
-                displayName="JuliaProDual2022TouchUI",
+            Volterra400Dual2022TouchUI=dict(
+                displayName="Volterra400Dual2022TouchUI",
                 displayVersion=self._plugin_version,
                 # version check: github repository
                 type="github_release",
                 user="FracktalWorks",
-                repo="JuliaProDual2022TouchUI",
+                repo="Octoprint-Volterra400Dual2022TouchUI",
                 current=self._plugin_version,
 
                 # update method: pip
-                pip="https://github.com/FracktalWorks/JuliaProDual2022TouchUI/archive/{target_version}.zip"
+                pip="https://github.com/FracktalWorks/Volterra400Dual2022TouchUI/archive/{target_version}.zip"
             )
         )
 
 
-__plugin_name__ = "Julia Pro Dual 2022 Touch UI"
+__plugin_name__ = "Volterra 400 Dual 2022 Touch UI"
 __plugin_version__ = __version__
 __plugin_pythoncompat__ = ">=3,<4"
 
 
 def __plugin_load__():
     global __plugin_implementation__
-    __plugin_implementation__ = JuliaProDual2022TouchUI()
+    __plugin_implementation__ = Volterra400Dual2022TouchUI()
 
     global __plugin_hooks__
     __plugin_hooks__ = {
