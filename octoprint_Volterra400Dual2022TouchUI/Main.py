@@ -2251,7 +2251,10 @@ class QtWebsocket(QtCore.QThread):
                     pass
 
     def on_open(self,ws):
+        print('Websocket opened')
+        pass
     def on_close(self, ws):
+        print('Websocket closed')
         pass
 
     def on_error(self, ws, error):
