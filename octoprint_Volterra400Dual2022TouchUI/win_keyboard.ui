@@ -7,19 +7,35 @@
     <x>0</x>
     <y>0</y>
     <width>480</width>
-    <height>320</height>
+    <height>800</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>480</width>
+    <height>800</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>480</width>
+    <height>800</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">
+background-color: rgb(40, 40, 40);</string>
+  </property>
   <widget class="QTextEdit" name="tbDisplay">
    <property name="geometry">
     <rect>
-     <x>0</x>
+     <x>-1</x>
      <y>0</y>
-     <width>288</width>
-     <height>81</height>
+     <width>482</width>
+     <height>566</height>
     </rect>
    </property>
    <property name="font">
@@ -43,8 +59,8 @@ p, li { white-space: pre-wrap; }
   <widget class="QStackedWidget" name="pageHolder">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>80</y>
+     <x>1</x>
+     <y>563</y>
      <width>480</width>
      <height>250</height>
     </rect>
@@ -77,9 +93,7 @@ p, li { white-space: pre-wrap; }
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -128,9 +142,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -179,9 +191,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -229,9 +239,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -280,9 +288,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -331,9 +337,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -381,9 +385,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -432,9 +434,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -483,9 +483,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -533,9 +531,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -583,9 +579,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -634,9 +628,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -685,9 +677,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -735,9 +725,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -790,9 +778,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -841,9 +827,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -892,9 +876,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -943,9 +925,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -993,9 +973,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -1044,9 +1022,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -1094,9 +1070,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -1145,9 +1119,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -1195,9 +1167,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -1246,9 +1216,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -1297,9 +1265,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -1347,9 +1313,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -1398,9 +1362,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -1457,9 +1419,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -1508,9 +1468,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -1558,9 +1516,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -1608,9 +1564,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -1659,9 +1613,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -1710,9 +1662,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -1771,9 +1721,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -3372,9 +3320,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -3423,9 +3369,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -3474,9 +3418,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -3525,9 +3467,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -3587,9 +3527,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -3638,9 +3576,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -3689,9 +3625,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -3739,9 +3673,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -3790,9 +3722,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -3840,9 +3770,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -3891,9 +3819,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -3942,9 +3868,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -3992,9 +3916,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -4043,9 +3965,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -4094,9 +4014,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -4206,9 +4124,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -4257,9 +4173,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -4308,9 +4222,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -4358,9 +4270,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -4409,9 +4319,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -4469,9 +4377,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -4519,9 +4425,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -4579,9 +4483,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -4630,9 +4532,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -4681,9 +4581,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -4732,9 +4630,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -4783,9 +4679,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -4834,9 +4728,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -4885,9 +4777,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -4936,9 +4826,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -4987,9 +4875,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -5038,9 +4924,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -5089,9 +4973,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -5140,9 +5022,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -5191,9 +5071,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -5242,9 +5120,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -5293,9 +5169,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -5344,9 +5218,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -5395,9 +5267,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -5446,9 +5316,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -5497,9 +5365,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -5548,9 +5414,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -5599,9 +5463,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -5649,9 +5511,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -5700,9 +5560,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -5751,9 +5609,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -5802,9 +5658,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -5853,9 +5707,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -5904,9 +5756,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -5955,9 +5805,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -6005,9 +5853,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -6056,9 +5902,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -6228,9 +6072,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -6279,9 +6121,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -6330,9 +6170,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -6381,9 +6219,7 @@ QPushButton:focus {
        <family>Gotham Medium</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
-       <underline>false</underline>
       </font>
      </property>
      <property name="styleSheet">
@@ -6467,9 +6303,9 @@ QPushButton:focus {
   <widget class="QPushButton" name="btCursorLeft">
    <property name="geometry">
     <rect>
-     <x>288</x>
-     <y>0</y>
-     <width>96</width>
+     <x>0</x>
+     <y>483</y>
+     <width>241</width>
      <height>81</height>
     </rect>
    </property>
@@ -6525,9 +6361,9 @@ QPushButton:focus {
   <widget class="QPushButton" name="btCursorRight">
    <property name="geometry">
     <rect>
-     <x>384</x>
-     <y>0</y>
-     <width>96</width>
+     <x>241</x>
+     <y>483</y>
+     <width>240</width>
      <height>81</height>
     </rect>
    </property>

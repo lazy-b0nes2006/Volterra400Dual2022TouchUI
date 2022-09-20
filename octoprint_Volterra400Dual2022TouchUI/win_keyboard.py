@@ -14,9 +14,13 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_WinKeyboard(object):
     def setupUi(self, WinKeyboard):
         WinKeyboard.setObjectName("WinKeyboard")
-        WinKeyboard.resize(480, 320)
+        WinKeyboard.resize(480, 800)
+        WinKeyboard.setMinimumSize(QtCore.QSize(480, 800))
+        WinKeyboard.setMaximumSize(QtCore.QSize(480, 800))
+        WinKeyboard.setStyleSheet("\n"
+"background-color: rgb(40, 40, 40);")
         self.tbDisplay = QtWidgets.QTextEdit(WinKeyboard)
-        self.tbDisplay.setGeometry(QtCore.QRect(0, 0, 288, 81))
+        self.tbDisplay.setGeometry(QtCore.QRect(-1, 0, 482, 566))
         font = QtGui.QFont()
         font.setFamily("Gotham")
         font.setPointSize(14)
@@ -25,7 +29,7 @@ class Ui_WinKeyboard(object):
 "color: rgb(255, 255, 255);")
         self.tbDisplay.setObjectName("tbDisplay")
         self.pageHolder = QtWidgets.QStackedWidget(WinKeyboard)
-        self.pageHolder.setGeometry(QtCore.QRect(0, 80, 480, 250))
+        self.pageHolder.setGeometry(QtCore.QRect(1, 563, 480, 250))
         font = QtGui.QFont()
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
@@ -43,8 +47,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt48.setFont(font)
         self.bt48.setStyleSheet("QPushButton {\n"
@@ -80,8 +82,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt52.setFont(font)
         self.bt52.setStyleSheet("QPushButton {\n"
@@ -117,8 +117,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt42.setFont(font)
         self.bt42.setStyleSheet("QPushButton {\n"
@@ -153,8 +151,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt54.setFont(font)
         self.bt54.setStyleSheet("QPushButton {\n"
@@ -190,8 +186,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt35.setFont(font)
         self.bt35.setStyleSheet("QPushButton {\n"
@@ -227,8 +221,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt45.setFont(font)
         self.bt45.setStyleSheet("QPushButton {\n"
@@ -263,8 +255,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt53.setFont(font)
         self.bt53.setStyleSheet("QPushButton {\n"
@@ -300,8 +290,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt33.setFont(font)
         self.bt33.setStyleSheet("QPushButton {\n"
@@ -337,8 +325,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt43.setFont(font)
         self.bt43.setStyleSheet("QPushButton {\n"
@@ -373,8 +359,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt40.setFont(font)
         self.bt40.setStyleSheet("QPushButton {\n"
@@ -409,8 +393,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt29.setFont(font)
         self.bt29.setStyleSheet("QPushButton {\n"
@@ -446,8 +428,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt30.setFont(font)
         self.bt30.setStyleSheet("QPushButton {\n"
@@ -483,8 +463,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt38.setFont(font)
         self.bt38.setStyleSheet("QPushButton {\n"
@@ -519,8 +497,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.btCaseAlpha.setFont(font)
         self.btCaseAlpha.setStyleSheet("QPushButton {\n"
@@ -560,8 +536,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt49.setFont(font)
         self.bt49.setStyleSheet("QPushButton {\n"
@@ -597,8 +571,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt31.setFont(font)
         self.bt31.setStyleSheet("QPushButton {\n"
@@ -634,8 +606,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt32.setFont(font)
         self.bt32.setStyleSheet("QPushButton {\n"
@@ -671,8 +641,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt44.setFont(font)
         self.bt44.setStyleSheet("QPushButton {\n"
@@ -707,8 +675,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt37.setFont(font)
         self.bt37.setStyleSheet("QPushButton {\n"
@@ -744,8 +710,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt46.setFont(font)
         self.bt46.setStyleSheet("QPushButton {\n"
@@ -780,8 +744,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt55.setFont(font)
         self.bt55.setStyleSheet("QPushButton {\n"
@@ -817,8 +779,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt41.setFont(font)
         self.bt41.setStyleSheet("QPushButton {\n"
@@ -853,8 +813,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt51.setFont(font)
         self.bt51.setStyleSheet("QPushButton {\n"
@@ -890,8 +848,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt36.setFont(font)
         self.bt36.setStyleSheet("QPushButton {\n"
@@ -927,8 +883,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt39.setFont(font)
         self.bt39.setStyleSheet("QPushButton {\n"
@@ -963,8 +917,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt50.setFont(font)
         self.bt50.setStyleSheet("QPushButton {\n"
@@ -1000,8 +952,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.btBackspaceAlpha.setFont(font)
         self.btBackspaceAlpha.setStyleSheet("QPushButton {\n"
@@ -1040,8 +990,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt34.setFont(font)
         self.bt34.setStyleSheet("QPushButton {\n"
@@ -1077,8 +1025,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt47.setFont(font)
         self.bt47.setStyleSheet("QPushButton {\n"
@@ -1113,8 +1059,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt56.setFont(font)
         self.bt56.setStyleSheet("QPushButton {\n"
@@ -1149,8 +1093,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.btSpaceAlpha.setFont(font)
         self.btSpaceAlpha.setStyleSheet("QPushButton {\n"
@@ -1186,8 +1128,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.btNumericAlpha.setFont(font)
         self.btNumericAlpha.setStyleSheet("QPushButton {\n"
@@ -1223,8 +1163,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.btSubmitAlpha.setFont(font)
         self.btSubmitAlpha.setStyleSheet("QPushButton {\n"
@@ -1265,8 +1203,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.btSpecialAlpha.setFont(font)
         self.btSpecialAlpha.setStyleSheet("QPushButton {\n"
@@ -2418,8 +2354,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.btSpecialAlphaU.setFont(font)
         self.btSpecialAlphaU.setStyleSheet("QPushButton {\n"
@@ -2455,8 +2389,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.btSpaceAlphaU.setFont(font)
         self.btSpaceAlphaU.setStyleSheet("QPushButton {\n"
@@ -2492,8 +2424,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.btNumericAlphaU.setFont(font)
         self.btNumericAlphaU.setStyleSheet("QPushButton {\n"
@@ -2529,8 +2459,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.btSubmitAlphaU.setFont(font)
         self.btSubmitAlphaU.setStyleSheet("QPushButton {\n"
@@ -2571,8 +2499,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt58.setFont(font)
         self.bt58.setStyleSheet("QPushButton {\n"
@@ -2608,8 +2534,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt57.setFont(font)
         self.bt57.setStyleSheet("QPushButton {\n"
@@ -2645,8 +2569,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt65.setFont(font)
         self.bt65.setStyleSheet("QPushButton {\n"
@@ -2681,8 +2603,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt62.setFont(font)
         self.bt62.setStyleSheet("QPushButton {\n"
@@ -2718,8 +2638,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt63.setFont(font)
         self.bt63.setStyleSheet("QPushButton {\n"
@@ -2754,8 +2672,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt61.setFont(font)
         self.bt61.setStyleSheet("QPushButton {\n"
@@ -2791,8 +2707,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt59.setFont(font)
         self.bt59.setStyleSheet("QPushButton {\n"
@@ -2828,8 +2742,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt64.setFont(font)
         self.bt64.setStyleSheet("QPushButton {\n"
@@ -2864,8 +2776,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt66.setFont(font)
         self.bt66.setStyleSheet("QPushButton {\n"
@@ -2901,8 +2811,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt60.setFont(font)
         self.bt60.setStyleSheet("QPushButton {\n"
@@ -2938,8 +2846,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.btBackNumeric.setFont(font)
         self.btBackNumeric.setStyleSheet("QPushButton {\n"
@@ -3017,8 +2923,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.btSpecialNumeric.setFont(font)
         self.btSpecialNumeric.setStyleSheet("QPushButton {\n"
@@ -3054,8 +2958,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt74_2.setFont(font)
         self.bt74_2.setStyleSheet("QPushButton {\n"
@@ -3091,8 +2993,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt79_2.setFont(font)
         self.bt79_2.setStyleSheet("QPushButton {\n"
@@ -3127,8 +3027,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt69_2.setFont(font)
         self.bt69_2.setStyleSheet("QPushButton {\n"
@@ -3164,8 +3062,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.btSubmitNumeric.setFont(font)
         self.btSubmitNumeric.setStyleSheet("QPushButton {\n"
@@ -3203,8 +3099,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.btSpaceNumeric.setFont(font)
         self.btSpaceNumeric.setStyleSheet("QPushButton {\n"
@@ -3239,8 +3133,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.btBackspaceNumeric.setFont(font)
         self.btBackspaceNumeric.setStyleSheet("QPushButton {\n"
@@ -3278,8 +3170,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt56_2.setFont(font)
         self.bt56_2.setStyleSheet("QPushButton {\n"
@@ -3316,8 +3206,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt78.setFont(font)
         self.bt78.setStyleSheet("QPushButton {\n"
@@ -3353,8 +3241,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt82.setFont(font)
         self.bt82.setStyleSheet("QPushButton {\n"
@@ -3390,8 +3276,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt70.setFont(font)
         self.bt70.setStyleSheet("QPushButton {\n"
@@ -3427,8 +3311,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt84.setFont(font)
         self.bt84.setStyleSheet("QPushButton {\n"
@@ -3464,8 +3346,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt73.setFont(font)
         self.bt73.setStyleSheet("QPushButton {\n"
@@ -3501,8 +3381,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt83.setFont(font)
         self.bt83.setStyleSheet("QPushButton {\n"
@@ -3538,8 +3416,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt71.setFont(font)
         self.bt71.setStyleSheet("QPushButton {\n"
@@ -3575,8 +3451,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt68.setFont(font)
         self.bt68.setStyleSheet("QPushButton {\n"
@@ -3612,8 +3486,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt77.setFont(font)
         self.bt77.setStyleSheet("QPushButton {\n"
@@ -3649,8 +3521,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt79.setFont(font)
         self.bt79.setStyleSheet("QPushButton {\n"
@@ -3686,8 +3556,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt72.setFont(font)
         self.bt72.setStyleSheet("QPushButton {\n"
@@ -3723,8 +3591,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt74.setFont(font)
         self.bt74.setStyleSheet("QPushButton {\n"
@@ -3760,8 +3626,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt85.setFont(font)
         self.bt85.setStyleSheet("QPushButton {\n"
@@ -3797,8 +3661,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt69.setFont(font)
         self.bt69.setStyleSheet("QPushButton {\n"
@@ -3834,8 +3696,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt81.setFont(font)
         self.bt81.setStyleSheet("QPushButton {\n"
@@ -3871,8 +3731,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt67.setFont(font)
         self.bt67.setStyleSheet("QPushButton {\n"
@@ -3908,8 +3766,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt80.setFont(font)
         self.bt80.setStyleSheet("QPushButton {\n"
@@ -3945,8 +3801,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt76.setFont(font)
         self.bt76.setStyleSheet("QPushButton {\n"
@@ -3982,8 +3836,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt75.setFont(font)
         self.bt75.setStyleSheet("QPushButton {\n"
@@ -4019,8 +3871,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt86.setFont(font)
         self.bt86.setStyleSheet("QPushButton {\n"
@@ -4055,8 +3905,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt90.setFont(font)
         self.bt90.setStyleSheet("QPushButton {\n"
@@ -4092,8 +3940,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt91.setFont(font)
         self.bt91.setStyleSheet("QPushButton {\n"
@@ -4129,8 +3975,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt92.setFont(font)
         self.bt92.setStyleSheet("QPushButton {\n"
@@ -4166,8 +4010,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt93.setFont(font)
         self.bt93.setStyleSheet("QPushButton {\n"
@@ -4203,8 +4045,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt87.setFont(font)
         self.bt87.setStyleSheet("QPushButton {\n"
@@ -4240,8 +4080,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt88.setFont(font)
         self.bt88.setStyleSheet("QPushButton {\n"
@@ -4277,8 +4115,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt89.setFont(font)
         self.bt89.setStyleSheet("QPushButton {\n"
@@ -4313,8 +4149,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt94.setFont(font)
         self.bt94.setStyleSheet("QPushButton {\n"
@@ -4350,8 +4184,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.btBackSpecial.setFont(font)
         self.btBackSpecial.setStyleSheet("QPushButton {\n"
@@ -4466,8 +4298,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.btNumericSpecial.setFont(font)
         self.btNumericSpecial.setStyleSheet("QPushButton {\n"
@@ -4503,8 +4333,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.btSpaceSpecial.setFont(font)
         self.btSpaceSpecial.setStyleSheet("QPushButton {\n"
@@ -4540,8 +4368,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.bt56_3.setFont(font)
         self.bt56_3.setStyleSheet("QPushButton {\n"
@@ -4577,8 +4403,6 @@ class Ui_WinKeyboard(object):
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
         font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
         font.setWeight(50)
         self.btSubmitSpecial.setFont(font)
         self.btSubmitSpecial.setStyleSheet("QPushButton {\n"
@@ -4647,7 +4471,7 @@ class Ui_WinKeyboard(object):
         self.btSubmitSpecial.raise_()
         self.pageHolder.addWidget(self.pgSpecial)
         self.btCursorLeft = QtWidgets.QPushButton(WinKeyboard)
-        self.btCursorLeft.setGeometry(QtCore.QRect(288, 0, 96, 81))
+        self.btCursorLeft.setGeometry(QtCore.QRect(0, 483, 241, 81))
         font = QtGui.QFont()
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
@@ -4686,7 +4510,7 @@ class Ui_WinKeyboard(object):
         self.btCursorLeft.setIconSize(QtCore.QSize(45, 45))
         self.btCursorLeft.setObjectName("btCursorLeft")
         self.btCursorRight = QtWidgets.QPushButton(WinKeyboard)
-        self.btCursorRight.setGeometry(QtCore.QRect(384, 0, 96, 81))
+        self.btCursorRight.setGeometry(QtCore.QRect(241, 483, 240, 81))
         font = QtGui.QFont()
         font.setFamily("Gotham Medium")
         font.setPointSize(14)
