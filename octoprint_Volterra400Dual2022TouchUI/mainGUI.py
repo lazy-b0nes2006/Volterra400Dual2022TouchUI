@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'mainGUI_volterra_400_dual.ui'
+# Form implementation generated from reading ui file 'mainGUI.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.0
 #
@@ -861,24 +861,6 @@ class Ui_MainWindow(object):
         self.line_9.setFrameShape(QtWidgets.QFrame.HLine)
         self.line_9.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_9.setObjectName("line_9")
-        self.virtualPrinterMode = QtWidgets.QLabel(self.homePage)
-        self.virtualPrinterMode.setEnabled(False)
-        self.virtualPrinterMode.setGeometry(QtCore.QRect(450, 0, 21, 31))
-        font = QtGui.QFont()
-        font.setPointSize(18)
-        font.setBold(True)
-        font.setWeight(75)
-        self.virtualPrinterMode.setFont(font)
-        self.virtualPrinterMode.setStyleSheet("\n"
-"background-color: rgba(255, 255, 255, 0);\n"
-"color:  qlineargradient(spread:pad, x1:0.517, y1:0, x2:0.522, y2:0, stop:0.0336134 rgba(74, 183, 255, 255), stop:1 rgba(53, 173, 242, 255));;\n"
-"font-size: 18pt;\n"
-"font-weight: bold;\n"
-"")
-        self.virtualPrinterMode.setScaledContents(True)
-        self.virtualPrinterMode.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
-        self.virtualPrinterMode.setWordWrap(True)
-        self.virtualPrinterMode.setObjectName("virtualPrinterMode")
         self.ipStatus = QtWidgets.QLabel(self.homePage)
         self.ipStatus.setGeometry(QtCore.QRect(348, 50, 131, 20))
         font = QtGui.QFont()
@@ -940,7 +922,6 @@ class Ui_MainWindow(object):
         self.doorLockButton.raise_()
         self.line_8.raise_()
         self.line_9.raise_()
-        self.virtualPrinterMode.raise_()
         self.ipStatus.raise_()
         self.stackedWidget.addWidget(self.homePage)
         self.MenuPage = QtWidgets.QWidget()
@@ -1620,7 +1601,7 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox::item {\n"
-"    color: rgb(255, 255, 255);\n"
+"    color: rgb(0, 0, 0);\n"
 "}\n"
 "\n"
 "QComboBox:editable {\n"
@@ -2361,7 +2342,7 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox::item {\n"
-"    color: rgb(255, 255, 255);\n"
+"    color: rgb(0, 0, 0);\n"
 "}\n"
 "\n"
 "QComboBox:editable {\n"
@@ -3219,7 +3200,7 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox::item {\n"
-"    color: rgb(255, 255, 255);\n"
+"    color: rgb(0, 0, 0);\n"
 "}\n"
 "\n"
 "QComboBox:editable {\n"
@@ -3331,7 +3312,7 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox::item {\n"
-"    color: rgb(255, 255, 255);\n"
+"    color: rgb(0, 0, 0);\n"
 "}\n"
 "\n"
 "QComboBox:editable {\n"
@@ -8059,19 +8040,15 @@ class Ui_MainWindow(object):
 "     border: 1px solid black;\n"
 "border-radius: 5px;\n"
 "    background-color: rgb(40,40,40);\n"
-"     width: 60px;\n"
-"     margin: 67px 0 67px 0;\n"
+"     width: 80px;\n"
+"     margin: 70px 0 70px 0;\n"
 " }\n"
-"\n"
-"/* Sets up the color and height of handle */\n"
-"QScrollBar::handle:vertical {\n"
+" QScrollBar::handle:vertical {\n"
 "border-radius: 5px;\n"
 "background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0.188, stop:0 rgba(180, 180, 180, 255), stop:1 rgba(255, 255, 255, 255));\n"
-"min-height: 7px;\n"
-"}\n"
-"\n"
-"\n"
-"QScrollBar::add-line:vertical {\n"
+"min-height: 20px;\n"
+" }\n"
+" QScrollBar::add-line:vertical {\n"
 "     border: 1px solid black;\n"
 "background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0.188, stop:0 rgba(180, 180, 180, 255), stop:1 rgba(255, 255, 255, 255));\n"
 "     height:65px;\n"
@@ -8102,10 +8079,9 @@ class Ui_MainWindow(object):
 " padding: 5px;\n"
 " }\n"
 "\n"
-"/* need this to get rid of crosshatching on scrollbar background */\n"
-"QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
-"background: none;\n"
-"}\n"
+" QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
+"     background: none;\n"
+" }\n"
 "\n"
 "QComboBox {\n"
 "border: 1px solid black;\n"
@@ -8115,7 +8091,7 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox::item {\n"
-"    color: rgb(255, 255, 255);\n"
+"    color: rgb(0, 0, 0);\n"
 "}\n"
 "\n"
 "QComboBox:editable {\n"
@@ -8148,12 +8124,7 @@ class Ui_MainWindow(object):
 "height: 30px;\n"
 "\n"
 "}\n"
-"\n"
-"\n"
-"QComboBox QAbstractItemView {\n"
-"    selection-background-color: rgb(40, 40, 40);\n"
-"    background: white;\n"
-"}")
+"")
         self.changeFilamentComboBox.setEditable(False)
         self.changeFilamentComboBox.setMaxVisibleItems(8)
         self.changeFilamentComboBox.setIconSize(QtCore.QSize(30, 30))
@@ -8610,7 +8581,6 @@ class Ui_MainWindow(object):
         self.tool0TargetTemperature_2.setText(_translate("MainWindow", "0"))
         self.tool0TargetTemperature_3.setText(_translate("MainWindow", "1"))
         self.doorLockButton.setText(_translate("MainWindow", "Toggle Door"))
-        self.virtualPrinterMode.setText(_translate("MainWindow", "V"))
         self.ipStatus.setText(_translate("MainWindow", "Not Connected"))
         self.menuControlButton.setText(_translate("MainWindow", "Control"))
         self.menuPrintButton.setText(_translate("MainWindow", "Print"))

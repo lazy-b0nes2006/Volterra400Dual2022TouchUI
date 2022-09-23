@@ -1550,6 +1550,31 @@ class MainUiClass(QtWidgets.QMainWindow, mainGUI.Ui_MainWindow):
         self.bedActualTemperatute.setText(str(int(temperature['bedActual'])))  # + unichr(176))
         self.bedTargetTemperature.setText(str(int(temperature['bedTarget'])))  # + unichr(176))
 
+        if temperature['chamberTarget'] == 0:
+            self.chamberTempBar.setMaximum(70)
+            self.chamberTempBar.setStyleSheet(styles.bar_heater_cold)
+        elif temperature['chamberActual'] <= temperature['chamberTarget']:
+            self.chamberTempBar.setMaximum(temperature['chamberTarget'])
+            self.chamberTempBar.setStyleSheet(styles.bar_heater_heating)
+        else:
+            self.chamberTempBar.setMaximum(temperature['chamberActual'])
+        self.chamberTempBar.setValue(temperature['chamberActual'])
+        self.chamberActualTemperatute.setText(str(int(temperature['chamberActual'])))  # + unichr(176))
+        self.chamberTargetTemperature.setText(str(int(temperature['chamberTarget'])))  # + unichr(176))
+
+        if temperature['filboxTarget'] == 0:
+            self.filboxTempBar.setMaximum(50)
+            self.filboxTempBar.setStyleSheet(styles.bar_heater_cold)
+        elif temperature['filboxActual'] <= temperature['filboxTarget']:
+            self.filboxTempBar.setMaximum(temperature['filboxTarget'])
+            self.filboxTempBar.setStyleSheet(styles.bar_heater_heating)
+        else:
+            self.filboxTempBar.setMaximum(temperature['filboxActual'])
+        self.filboxTempBar.setValue(temperature['filboxActual'])
+        self.filboxActualTemperatute.setText(str(int(temperature['filboxActual'])))  # + unichr(176))
+        self.filboxTargetTemperature.setText(str(int(temperature['filboxTarget'])))  # + unichr(176))
+
+
         # updates the progress bar on the change filament screen
         if self.changeFilamentHeatingFlag:
             if self.activeExtruder == 0:
@@ -1582,6 +1607,7 @@ class MainUiClass(QtWidgets.QMainWindow, mainGUI.Ui_MainWindow):
                         octopiclient.extrude(5)     # extrudes some amount of filament to prevent plugging
 
                 self.changeFilamentProgress.setValue(temperature['tool1Actual'])
+
 
     def updatePrintStatus(self, file):
         '''
@@ -2240,7 +2266,7 @@ class QtWebsocket(QtCore.QThread):
                                     'chamberTarget': temp(data, "tool2", "target"),
                                     'filboxActual': temp(data, "tool3", "actual"),
                                     'filboxTarget': temp(data, "tool3", "target")}
-                    self.emit(QtCore.SIGNAL('TEMPERATURES'), temperatures)
+                    self.temperatures_signal.emit(temperatures)
                 except KeyError:
                     # temperatures = {'tool0Actual': 0,
                     #                 'tool0Target': 0,
@@ -2294,18 +2320,12 @@ class ThreadSanityCheck(QtCore.QThread):
                     print(result)
                     result = [s.strip() for s in result]
                     for line in result:
-                        # if b'FTDI' in line:
-                        #     self.MKSPort = line[line.index(b'ttyUSB'):line.index(b'ttyUSB') + 7].decode('utf-8')
-                        #     print(self.MKSPort)
-                        # if b'ch34' in line:
-                        #     self.MKSPort = line[line.index(b'ttyUSB'):line.index(b'ttyUSB') + 7].decode('utf-8')
-                        #     print(self.MKSPort)
-                        if 'ch341-uart' in line:
-                            self.MKSPort = line[line.index('ttyUSB'):line.index('ttyUSB') + 7]
-                            print self.MKSPort
-                        elif 'FTDI' in line:
-                            self.MKSPort = line[line.index('ttyUSB'):line.index('ttyUSB') + 7]
-                            print self.MKSPort
+                        if b'FTDI' in line:
+                            self.MKSPort = line[line.index(b'ttyUSB'):line.index(b'ttyUSB') + 7].decode('utf-8')
+                            print(self.MKSPort)
+                        if b'ch34' in line:
+                            self.MKSPort = line[line.index(b'ttyUSB'):line.index(b'ttyUSB') + 7].decode('utf-8')
+                            print(self.MKSPort)
 
                     if not self.MKSPort:
                         octopiclient.connectPrinter(port="VIRTUAL", baudrate=115200)
