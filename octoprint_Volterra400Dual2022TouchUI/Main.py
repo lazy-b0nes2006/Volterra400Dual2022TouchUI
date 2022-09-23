@@ -2294,12 +2294,18 @@ class ThreadSanityCheck(QtCore.QThread):
                     print(result)
                     result = [s.strip() for s in result]
                     for line in result:
-                        if b'FTDI' in line:
-                            self.MKSPort = line[line.index(b'ttyUSB'):line.index(b'ttyUSB') + 7].decode('utf-8')
-                            print(self.MKSPort)
-                        if b'ch34' in line:
-                            self.MKSPort = line[line.index(b'ttyUSB'):line.index(b'ttyUSB') + 7].decode('utf-8')
-                            print(self.MKSPort)
+                        # if b'FTDI' in line:
+                        #     self.MKSPort = line[line.index(b'ttyUSB'):line.index(b'ttyUSB') + 7].decode('utf-8')
+                        #     print(self.MKSPort)
+                        # if b'ch34' in line:
+                        #     self.MKSPort = line[line.index(b'ttyUSB'):line.index(b'ttyUSB') + 7].decode('utf-8')
+                        #     print(self.MKSPort)
+                        if 'ch341-uart' in line:
+                            self.MKSPort = line[line.index('ttyUSB'):line.index('ttyUSB') + 7]
+                            print self.MKSPort
+                        elif 'FTDI' in line:
+                            self.MKSPort = line[line.index('ttyUSB'):line.index('ttyUSB') + 7]
+                            print self.MKSPort
 
                     if not self.MKSPort:
                         octopiclient.connectPrinter(port="VIRTUAL", baudrate=115200)
