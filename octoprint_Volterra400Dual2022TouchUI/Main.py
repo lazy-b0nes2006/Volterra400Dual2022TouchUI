@@ -2250,8 +2250,8 @@ class QtWebsocket(QtCore.QThread):
                 try:
                     if tool in data["current"]["temps"][0]:
                         return data["current"]["temps"][0][tool][temp]
-                except:
-                    pass
+                except Exception as e:
+                    print("Temperature error: " + str(e))
                 return 0
 
             if data["current"]["temps"] and len(data["current"]["temps"]) > 0:
@@ -2267,20 +2267,13 @@ class QtWebsocket(QtCore.QThread):
                                     'filboxActual': temp(data, "tool3", "actual"),
                                     'filboxTarget': temp(data, "tool3", "target")}
                     self.temperatures_signal.emit(temperatures)
-                except KeyError:
-                    # temperatures = {'tool0Actual': 0,
-                    #                 'tool0Target': 0,
-                    #                 'tool1Actual': 0,
-                    #                 'tool1Target': 0,
-                    #                 'bedActual': 0,
-                    #                 'bedTarget': 0}
-                    pass
+                except Exception as e:
+                    print("error: " + str(e))
 
     def on_open(self,ws):
-        print('Websocket opened')
-        pass
+        self.authenticate()
+
     def on_close(self, ws):
-        print('Websocket closed')
         pass
 
     def on_error(self, ws, error):
