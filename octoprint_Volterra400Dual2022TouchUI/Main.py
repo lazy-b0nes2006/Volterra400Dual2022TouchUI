@@ -2017,24 +2017,26 @@ class MainUiClass(QtWidgets.QMainWindow, mainGUI.Ui_MainWindow):
         single and dual. bedLevel, dualCalibration, movementTest, dualTest, singleTest
         :return:
         '''
-        if gcode is 'bedLevel':
-            self.printFromPath('gcode/' + tool0Diameter + '_BedLeveling.gcode', True)
-        elif gcode is 'dualCalibration':
-            self.printFromPath(
-                'gcode/' + tool0Diameter + '_' + tool1Diameter + '_dual_extruder_calibration_Volterra.gcode',
-                True)
-        elif gcode is 'movementTest':
-            self.printFromPath('gcode/movementTest.gcode', True)
-        elif gcode is 'dualTest':
-            self.printFromPath(
-                'gcode/' + tool0Diameter + '_' + tool1Diameter + '_Fracktal_logo_Volterra.gcode',
-                True)
-        elif gcode is 'singleTest':
-            self.printFromPath('gcode/' + tool0Diameter + '_Fracktal_logo_Volterra.gcode',True)
+        try:
+            if gcode is 'bedLevel':
+                self.printFromPath('gcode/' + tool0Diameter + '_BedLeveling.gcode', True)
+            elif gcode is 'dualCalibration':
+                self.printFromPath(
+                    'gcode/' + tool0Diameter + '_' + tool1Diameter + '_dual_extruder_calibration_Volterra.gcode',
+                    True)
+            elif gcode is 'movementTest':
+                self.printFromPath('gcode/movementTest.gcode', True)
+            elif gcode is 'dualTest':
+                self.printFromPath(
+                    'gcode/' + tool0Diameter + '_' + tool1Diameter + '_Fracktal_logo_Volterra.gcode',
+                    True)
+            elif gcode is 'singleTest':
+                self.printFromPath('gcode/' + tool0Diameter + '_Fracktal_logo_Volterra.gcode',True)
 
-        else:
-            print("gcode not found")
-
+            else:
+                print("gcode not found")
+        except Exception as e:
+            print("Eror:" + e)
     def printFromPath(self,path,prnt=True):
         '''
         Transfers a file from a specific to octoprint's watched folder so that it gets automatically detected by Octoprint.
