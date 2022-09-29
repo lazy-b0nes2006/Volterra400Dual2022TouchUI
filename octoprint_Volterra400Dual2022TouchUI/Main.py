@@ -1906,13 +1906,13 @@ class MainUiClass(QtWidgets.QMainWindow, mainGUI.Ui_MainWindow):
         octopiclient.gcode(command='M500')
 
     def getToolOffset(self, M218Data):
-
         self.toolOffsetZ = M218Data[M218Data.index('Z') + 1:].split(' ', 1)[0]
         self.toolOffsetX = M218Data[M218Data.index('X') + 1:].split(' ', 1)[0]
         self.toolOffsetY = M218Data[M218Data.index('Y') + 1:].split(' ', 1)[0]
-        self.toolOffsetXDoubleSpinBox.setValue(float(self.toolOffsetX))
-        self.toolOffsetYDoubleSpinBox.setValue(float(self.toolOffsetY))
-        self.toolOffsetZDoubleSpinBox.setValue(float(self.toolOffsetZ))
+        if float(self.toolOffsetX) > 0:
+            self.toolOffsetXDoubleSpinBox.setValue(float(self.toolOffsetX))
+            self.toolOffsetYDoubleSpinBox.setValue(float(self.toolOffsetY))
+            self.toolOffsetZDoubleSpinBox.setValue(float(self.toolOffsetZ))
 
     def quickStep1(self):
         '''
