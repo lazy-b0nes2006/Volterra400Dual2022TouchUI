@@ -417,6 +417,7 @@ class MainUiClass(QtWidgets.QMainWindow, mainGUI.Ui_MainWindow):
         self.menuButton.pressed.connect(lambda: self.stackedWidget.setCurrentWidget(self.MenuPage))
         self.controlButton.pressed.connect(self.control)
         self.playPauseButton.clicked.connect(self.playPauseAction)
+        self.doorLockButton.clicked.connect(self.doorLock)
 
         # MenuScreen
         self.menuBackButton.pressed.connect(lambda: self.stackedWidget.setCurrentWidget(self.homePage))
@@ -740,6 +741,7 @@ class MainUiClass(QtWidgets.QMainWindow, mainGUI.Ui_MainWindow):
             return
 
         triggered_extruder0 = False
+        triggered_extruder1 = False
         triggered_door = False
         pause_print = False
 
@@ -748,15 +750,24 @@ class MainUiClass(QtWidgets.QMainWindow, mainGUI.Ui_MainWindow):
         elif 'extruder0' in data:
             triggered_extruder0 = data["extruder0"] == 0
 
+        if 'filament2' in data:
+            triggered_extruder1 = data["filament2"] == 0
+        elif 'extruder0' in data:
+            triggered_extruder1 = data["extruder1"] == 0
+
         if 'door' in data:
             triggered_door = data["door"] == 0
         if 'pause_print' in data:
             pause_print = data["pause_print"]
 
-        #Update
         if triggered_extruder0 and self.stackedWidget.currentWidget() not in [self.changeFilamentPage, self.changeFilamentProgressPage,
                                   self.changeFilamentExtrudePage, self.changeFilamentRetractPage]:
             if dialog.WarningOk(self, "Filament outage in Extruder 0"):
+                pass
+
+        if triggered_extruder1 and self.stackedWidget.currentWidget() not in [self.changeFilamentPage, self.changeFilamentProgressPage,
+                                  self.changeFilamentExtrudePage, self.changeFilamentRetractPage]:
+            if dialog.WarningOk(self, "Filament outage in Extruder 1"):
                 pass
 
         if triggered_door:
@@ -1692,9 +1703,7 @@ class MainUiClass(QtWidgets.QMainWindow, mainGUI.Ui_MainWindow):
             self.changeFilamentButton.setDisabled(True)
             self.menuCalibrateButton.setDisabled(True)
             self.menuPrintButton.setDisabled(True)
-            # if not self.__timelapse_enabled:
-            #     octopiclient.cancelPrint()
-            #     self.coolDownAction()
+            self.doorLockButton.setDisabled(False)
 
         elif status == "Paused":
             self.playPauseButton.setChecked(False)
@@ -1703,6 +1712,7 @@ class MainUiClass(QtWidgets.QMainWindow, mainGUI.Ui_MainWindow):
             self.changeFilamentButton.setDisabled(False)
             self.menuCalibrateButton.setDisabled(True)
             self.menuPrintButton.setDisabled(True)
+            self.doorLockButton.setDisabled(True)
 
         else:
             self.stopButton.setDisabled(True)
@@ -1711,6 +1721,7 @@ class MainUiClass(QtWidgets.QMainWindow, mainGUI.Ui_MainWindow):
             self.changeFilamentButton.setDisabled(False)
             self.menuCalibrateButton.setDisabled(False)
             self.menuPrintButton.setDisabled(False)
+            self.doorLockButton.setDisabled(True)
 
     ''' ++++++++++++++++++++++++++++Active Extruder/Tool Change++++++++++++++++++++++++ '''
 
