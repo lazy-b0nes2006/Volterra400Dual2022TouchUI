@@ -12,6 +12,23 @@ api:
 appearance:
   name: Volterra 400 Dual
 plugins:
+  Julia2018FilamentSensor:
+    _config_version: 2
+    contact_door: '0'
+    contact_extruder0: '0'
+    contact_extruder1: '0'
+    enabled_door: '0'
+    enabled_extruder0: '0'
+    enabled_extruder1: '0'
+    pause_print: '1'
+    sensor_enabled: '1'
+  Julia2018PrintRestore:
+    _config_version: 2
+  JuliaTowerLight:
+    delay_off: '500'
+    delay_on: '500'
+    strobe: '0'
+    tower_enabled: '1'
   VolterraServices:
     _config_version: 2
     contact_door_sensor: '0'
@@ -22,13 +39,6 @@ plugins:
     enabled_extruder1: '1'
     pause_print: '1'
     sensor_enabled: '1'
-  JuliaTowerLight:
-    delay_off: '500'
-    delay_on: '500'
-    strobe: '0'
-    tower_enabled: '1'
-  Julia2018PrintRestore:
-    _config_version: 2
   announcements:
     _config_version: 1
     channels:
@@ -49,6 +59,8 @@ plugins:
     upnpUuid: 7d61cbb7-f5c7-4221-949c-fd27225bf68e
   errortracking:
     unique_id: 4b7b81dd-6112-41ad-ba35-510c25fcb168
+  firmware_check:
+    ignore_infos: true
   firmwareupdater:
     _config_version: 3
     _selected_profile: 0
