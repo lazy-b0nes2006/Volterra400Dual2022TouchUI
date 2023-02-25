@@ -1540,8 +1540,8 @@ class MainUiClass(QtWidgets.QMainWindow, mainGUI.Ui_MainWindow):
         if temperature['tool1Target'] == 0:
             self.tool1TempBar.setMaximum(300)
             self.tool1TempBar.setStyleSheet(styles.bar_heater_cold)
-        elif temperature['tool1Actual'] <= temperature['tool0Target']:
-            self.tool1TempBar.setMaximum(temperature['tool0Target'])
+        elif temperature['tool1Actual'] <= temperature['tool1Target']:
+            self.tool1TempBar.setMaximum(temperature['tool1Target'])
             self.tool1TempBar.setStyleSheet(styles.bar_heater_heating)
         else:
             self.tool1TempBar.setMaximum(temperature['tool1Actual'])
