@@ -2049,6 +2049,7 @@ class MainUiClass(QtWidgets.QMainWindow, mainGUI.Ui_MainWindow):
                 print("gcode not found")
         except Exception as e:
             print("Eror:" + e)
+    
     def printFromPath(self,path,prnt=True):
         '''
         Transfers a file from a specific to octoprint's watched folder so that it gets automatically detected by Octoprint.
@@ -2059,6 +2060,7 @@ class MainUiClass(QtWidgets.QMainWindow, mainGUI.Ui_MainWindow):
         self.uploadThread.start()
         if prnt:
             self.stackedWidget.setCurrentWidget(self.homePage)
+    
     ''' +++++++++++++++++++++++++++++++++++Keyboard++++++++++++++++++++++++++++++++ '''
 
     def startKeyboard(self, returnFn, onlyNumeric=False, noSpace=False, text=""):
