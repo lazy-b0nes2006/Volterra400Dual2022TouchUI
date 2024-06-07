@@ -54,7 +54,7 @@ class MainUIClass(QtWidgets.QMainWindow, mainGUI.Ui_MainWindow):
         self.settingsPageInstance = settingsPage.settingsPage(self)
         self.activeExtruderInstance = activeExtruder.activeExtruder(self)
         self.doorLockInstance = doorLock.doorLock(self)
-        
+
         if not Development:
             formatter = logging.Formatter("%(asctime)s %(message)s")
             self._logger = logging.getLogger("TouchUI")
@@ -337,7 +337,7 @@ class ThreadSanityCheck(QtCore.QThread):
                     self.shutdown_flag = True
                     self.startup_error_signal.emit()
                     break
-                #octopiclient = octoprintAPI(ip, apiKey)
+                octopiclient = octoprintAPI(ip, apiKey)
                 if not self.virtual:
                     result = subprocess.Popen("dmesg | grep 'ttyUSB'", stdout=subprocess.PIPE, shell=True).communicate()[0]
                     result = result.split(b'\n')  # each ssid and pass from an item in a list ([ssid pass,ssid paas])

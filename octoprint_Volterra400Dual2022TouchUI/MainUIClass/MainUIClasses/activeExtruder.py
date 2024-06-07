@@ -59,7 +59,7 @@ class activeExtruder:
             # self.toolToggleChangeFilamentButton.setText("0")
             self.toolToggleMotionButton.setChecked(False)
             self.toolToggleMotionButton.setText("0")
-            self.activeExtruder = 0
+            self.MainUIObj.activeExtruder = 0
         elif activeNozzle == 1:
             self.tool0Label.setPixmap(QtGui.QPixmap(_fromUtf8("templates/img/Nozzle.png")))
             self.tool1Label.setPixmap(QtGui.QPixmap(_fromUtf8("templates/img/activeNozzle.png")))
@@ -67,7 +67,7 @@ class activeExtruder:
             # self.toolToggleChangeFilamentButton.setText("1")
             self.toolToggleMotionButton.setChecked(True)
             self.toolToggleMotionButton.setText("1")
-            self.activeExtruder = 1
+            self.MainUIObj.activeExtruder = 1
 
             # set button states
             # set octoprint if mismatch

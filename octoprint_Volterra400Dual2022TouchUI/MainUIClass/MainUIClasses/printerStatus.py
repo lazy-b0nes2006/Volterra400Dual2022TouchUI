@@ -14,12 +14,12 @@ class printerStatus:
         runs at 1HZ, so do things that need to be constantly updated only. This also controls the cooling fan depending on the temperatures
         :param temperature: dict containing key:value pairs with keys being the tools, bed and their values being their corresponding temperatures
         '''
-        if temperature['tool0Target'] is None:
-            temperature['tool0Target'] = 0
-        if temperature['bedTarget'] is None:
-            temperature['bedTarget'] = 0
-        if temperature['bedActual'] is None:
-            temperature['bedActual'] = 0
+        # if temperature['tool0Target'] is None:
+        #     temperature['tool0Target'] = 0
+        # if temperature['bedTarget'] is None:
+        #     temperature['bedTarget'] = 0
+        # if temperature['bedActual'] is None:
+        #     temperature['bedActual'] = 0
 
         if temperature['tool0Target'] == 0:
             self.MainUIObj.tool0TempBar.setMaximum(300)
@@ -33,6 +33,18 @@ class printerStatus:
         self.MainUIObj.tool0ActualTemperature.setText(str(int(temperature['tool0Actual'])))
         self.MainUIObj.tool0TargetTemperature.setText(str(int(temperature['tool0Target'])))
 
+        if temperature['tool1Target'] == 0:
+            self.MainUIObj.tool1TempBar.setMaximum(300)
+            self.MainUIObj.tool1TempBar.setStyleSheet(styles.bar_heater_cold)
+        elif temperature['tool1Actual'] <= temperature['tool1Target']:
+            self.MainUIObj.tool1TempBar.setMaximum(temperature['tool1Target'])
+            self.MainUIObj.tool1TempBar.setStyleSheet(styles.bar_heater_heating)
+        else:
+            self.MainUIObj.tool1TempBar.setMaximum(temperature['tool1Actual'])
+        self.MainUIObj.tool1TempBar.setValue(temperature['tool1Actual'])
+        self.MainUIObj.tool1ActualTemperature.setText(str(int(temperature['tool1Actual'])))  # + unichr(176)
+        self.MainUIObj.tool1TargetTemperature.setText(str(int(temperature['tool1Target'])))
+
         if temperature['bedTarget'] == 0:
             self.MainUIObj.bedTempBar.setMaximum(150)
             self.MainUIObj.bedTempBar.setStyleSheet(styles.bar_heater_cold)
@@ -44,6 +56,32 @@ class printerStatus:
         self.MainUIObj.bedTempBar.setValue(int(temperature['bedActual']))
         self.MainUIObj.bedActualTemperatute.setText(str(int(temperature['bedActual'])))
         self.MainUIObj.bedTargetTemperature.setText(str(int(temperature['bedTarget'])))
+
+        if temperature['chamberTarget'] == 0:
+            self.MainUIObj.chamberTempBar.setMaximum(70)
+            self.MainUIObj.chamberTempBar.setStyleSheet(styles.bar_heater_cold)
+        elif temperature['chamberActual'] <= temperature['chamberTarget']:
+            self.MainUIObj.chamberTempBar.setMaximum(temperature['chamberTarget'])
+            self.MainUIObj.chamberTempBar.setStyleSheet(styles.bar_heater_heating)
+        else:
+            self.MainUIObj.chamberTempBar.setMaximum(temperature['chamberActual'])
+        self.MainUIObj.chamberTempBar.setValue(temperature['chamberActual'])
+        self.MainUIObj.chamberActualTemperatute.setText(str(int(temperature['chamberActual'])))  # + unichr(176))
+        self.MainUIObj.chamberTargetTemperature.setText(str(int(temperature['chamberTarget'])))  # + unichr(176))
+
+        if temperature['filboxTarget'] == 0:
+            self.MainUIObj.filboxTempBar.setMaximum(50)
+            self.MainUIObj.filboxTempBar.setStyleSheet(styles.bar_heater_cold)
+        elif temperature['filboxActual'] <= temperature['filboxTarget']:
+            self.MainUIObj.filboxTempBar.setMaximum(temperature['filboxTarget'])
+            self.MainUIObj.filboxTempBar.setStyleSheet(styles.bar_heater_heating)
+        else:
+            self.MainUIObj.filboxTempBar.setMaximum(temperature['filboxActual'])
+        self.MainUIObj.filboxTempBar.setValue(temperature['filboxActual'])
+        self.MainUIObj.filboxActualTemperatute.setText(str(int(temperature['filboxActual'])))  # + unichr(176))
+        self.MainUIObj.filboxTargetTemperature.setText(str(int(temperature['filboxTarget'])))  # + unichr(176))
+
+
 
         # updates the progress bar on the change filament screen
         if self.MainUIObj.changeFilamentHeatingFlag:
@@ -58,9 +96,25 @@ class printerStatus:
                     self.MainUIObj.stackedWidget.setCurrentWidget(self.MainUIObj.changeFilamentExtrudePage)
                 else:
                     self.MainUIObj.stackedWidget.setCurrentWidget(self.MainUIObj.changeFilamentRetractPage)
-                    octopiclient.extrude(10)  # extrudes some amount of filament to prevent plugging
+                    octopiclient.extrude(5)  # extrudes some amount of filament to prevent plugging
 
             self.MainUIObj.changeFilamentProgress.setValue(int(temperature['tool0Actual']))
+
+        if self.MainUIObj.activeExtruder == 1:
+            if temperature['tool1Target'] == 0:
+                self.MainUIObj.changeFilamentProgress.setMaximum(300)
+            elif temperature['tool1Target'] - temperature['tool1Actual'] > 1:
+                self.MainUIObj.changeFilamentProgress.setMaximum(temperature['tool1Target'])
+            else:
+                self.MainUIObj.changeFilamentProgress.setMaximum(temperature['tool1Actual'])
+                self.MainUIObj.changeFilamentHeatingFlag = False
+                if self.MainUIObj.loadFlag:
+                    self.MainUIObj.stackedWidget.setCurrentWidget(self.MainUIObj.changeFilamentExtrudePage)
+                else:
+                    self.MainUIObj.stackedWidget.setCurrentWidget(self.MainUIObj.changeFilamentRetractPage)
+                    octopiclient.extrude(5)     # extrudes some amount of filament to prevent plugging
+
+            self.MainUIObj.changeFilamentProgress.setValue(temperature['tool1Actual'])
 
     def updatePrintStatus(self, file):
         '''
@@ -143,6 +197,8 @@ class printerStatus:
             self.MainUIObj.changeFilamentButton.setDisabled(True)
             self.MainUIObj.menuCalibrateButton.setDisabled(True)
             self.MainUIObj.menuPrintButton.setDisabled(True)
+            self.doorLockButton.setDisabled(False)
+
             # if not Development:
             #     if not self.__timelapse_enabled:
             #         octopiclient.cancelPrint()
@@ -154,6 +210,8 @@ class printerStatus:
             self.MainUIObj.changeFilamentButton.setDisabled(False)
             self.MainUIObj.menuCalibrateButton.setDisabled(True)
             self.MainUIObj.menuPrintButton.setDisabled(True)
+            self.doorLockButton.setDisabled(True)
+
         else:
             self.MainUIObj.stopButton.setDisabled(True)
             self.MainUIObj.playPauseButton.setChecked(False)
@@ -161,3 +219,5 @@ class printerStatus:
             self.MainUIObj.changeFilamentButton.setDisabled(False)
             self.MainUIObj.menuCalibrateButton.setDisabled(False)
             self.MainUIObj.menuPrintButton.setDisabled(False)
+            self.doorLockButton.setDisabled(True)
+

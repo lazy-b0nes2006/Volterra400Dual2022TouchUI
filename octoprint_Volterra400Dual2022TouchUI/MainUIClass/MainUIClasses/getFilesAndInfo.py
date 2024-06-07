@@ -53,10 +53,10 @@ class getFilesAndInfo:
         files.sort(key=lambda d: d['date'], reverse=True)
         # for item in [f['name'] for f in files] :
         #     self.fileListWidget.addItem(item)
-        for f in files:
-            if ".gcode" in f['name']:
-                self.MainUIObj.fileListWidget.addItem(f['name'])
-        #self.fileListWidget.addItems([f['name'] for f in files])
+        # for f in files:
+        #     if ".gcode" in f['name']:
+        #         self.MainUIObj.fileListWidget.addItem(f['name'])
+        self.MainUIObj.fileListWidget.addItems([f['name'] for f in files])
         self.MainUIObj.fileListWidget.setCurrentRow(0)
 
     def fileListUSB(self):
@@ -209,4 +209,3 @@ class ThreadFileUpload(QtCore.QThread):
             octopiclient.uploadGcode(file=self.file, select=True, prnt=True)
         else:
             octopiclient.uploadGcode(file=self.file, select=False, prnt=False)
-

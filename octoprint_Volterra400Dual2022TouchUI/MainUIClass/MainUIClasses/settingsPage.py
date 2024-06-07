@@ -5,6 +5,7 @@ from MainUIClass.MainUIClasses.networking_package.wifiSettingsPage import Thread
 from MainUIClass.gui_elements import Image
 import dialog
 import os
+import json
 
 class settingsPage:
     def __init__(self, MainUIObj):
@@ -35,12 +36,12 @@ class settingsPage:
             if dialog.WarningOk(self.MainUIObj, "Network Disconnected"):
                 return
         self.MainUIObj.QRCodeLabel.setPixmap(
-            qrcode.make("http://"+ qrip, image_factory=Image).pixmap())
-        self.stackedWidget.setCurrentWidget(self.QRCodePage)
+            qrcode.make(json.dumps(qrip), image_factory=Image).pixmap())
+        self.MainUIObj.stackedWidget.setCurrentWidget(self.MainUIObj.QRCodePage)
 
     def restoreFactoryDefaults(self):
-        if dialog.WarningYesNo(self.MainUIObj, "Are you sure you want to restore machine state to factory defaults?\nWarning: Doing so will also reset printer profiles, WiFi & Ethernet config.",
-                                overlay=True):
+        if dialog.WarningYesNo(self, "Are you sure you want to restore machine state to factory defaults?\nWarning: Doing so will also reset printer profiles, WiFi & Ethernet config.",
+                               overlay=True):
             os.system('sudo cp -f config/dhcpcd.conf /etc/dhcpcd.conf')
             os.system('sudo cp -f config/wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf')
             os.system('sudo rm -rf /home/pi/.octoprint/users.yaml')

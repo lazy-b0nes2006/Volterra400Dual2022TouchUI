@@ -25,6 +25,11 @@ class QtWebsocket(QtCore.QThread):
     connected_signal = QtCore.pyqtSignal()
     filament_sensor_triggered_signal = QtCore.pyqtSignal(dict)
     firmware_updater_signal = QtCore.pyqtSignal(dict)
+    set_z_tool_offset_signal = QtCore.pyqtSignal(str,bool)
+    tool_offset_signal = QtCore.pyqtSignal(str)
+    active_extruder_signal = QtCore.pyqtSignal(str)
+    z_probe_offset_signal = QtCore.pyqtSignal(str)
+    z_probing_failed_signal = QtCore.pyqtSignal()
 
     def __init__(self):
 
@@ -85,7 +90,6 @@ class QtWebsocket(QtCore.QThread):
         if message_type == "a":
             self.process(data)
 
-
     @run_async
     def process(self, data):
 
@@ -93,9 +97,8 @@ class QtWebsocket(QtCore.QThread):
             if data["event"]["type"] == "Connected":
                 self.connected_signal.emit()
                 print("connected")
-
         if "plugin" in data:
-            if data["plugin"]["plugin"] == 'Julia2018FilamentSensor':
+            if data["plugin"]["plugin"] == 'VolterraServices':
                  self.filament_sensor_triggered_signal.emit(data["plugin"]["data"])
 
             if data["plugin"]["plugin"] == 'JuliaFirmwareUpdater':
@@ -112,7 +115,6 @@ class QtWebsocket(QtCore.QThread):
                     self.update_failed_signal.emit(data["plugin"]["data"]["data"])
 
         if "current" in data:
-
             if data["current"]["messages"]:
                 for item in data["current"]["messages"]:
                     if 'M206' in item: #response to M503, send current Z offset value
@@ -120,6 +122,18 @@ class QtWebsocket(QtCore.QThread):
                     # if 'Count' in item:  # gets the current Z value, uses it to set Z offset
                     #     self.emit(QtCore.SIGNAL('SET_Z_HOME_OFFSET'), item[item.index('Z') + 2:].split(' ', 1)[0],
                     #               False)
+                    if 'Count' in item:  # can get thris throught the positionUpdate event
+                        self.set_z_tool_offset_signal.emit(item[item.index('Z') + 2:].split(' ', 1)[0],
+                                  False)
+                    if 'M218' in item:
+                        self.tool_offset_signal.emit(item[item.index('M218'):])
+                    if 'Active Extruder' in item:  # can get thris throught the positionUpdate event
+                        self.active_extruder_signal.emit(item[-1])
+                    
+                    if 'M851' in item:
+                        self.z_probe_offset_signal.emit(item[item.index('Z') + 1:].split(' ', 1)[0])
+                    if 'PROBING_FAILED' in item:
+                        self.z_probing_failed_signal.emit()
 
             if data["current"]["state"]["text"]:
                 self.status_signal.emit(data["current"]["state"]["text"])
@@ -134,24 +148,25 @@ class QtWebsocket(QtCore.QThread):
                 try:
                     if tool in data["current"]["temps"][0]:
                         return data["current"]["temps"][0][tool][temp]
-                except:
-                    pass
+                except Exception as e:
+                    print("Temperature error: " + str(e))
                 return 0
 
             if data["current"]["temps"] and len(data["current"]["temps"]) > 0:
                 try:
                     temperatures = {'tool0Actual': temp(data, "tool0", "actual"),
                                     'tool0Target': temp(data, "tool0", "target"),
+                                    'tool1Actual': temp(data, "tool1", "actual"),
+                                    'tool1Target': temp(data, "tool1", "target"),
                                     'bedActual': temp(data, "bed", "actual"),
-                                    'bedTarget': temp(data, "bed", "target")}
+                                    'bedTarget': temp(data, "bed", "target"),
+                                    'chamberActual': temp(data, "tool2", "actual"),
+                                    'chamberTarget': temp(data, "tool2", "target"),
+                                    'filboxActual': temp(data, "tool3", "actual"),
+                                    'filboxTarget': temp(data, "tool3", "target")}
                     self.temperatures_signal.emit(temperatures)
-                except KeyError:
-                    # temperatures = {'tool0Actual': data["current"]["temps"][0]["tool0"]["actual"],
-                    #                 'tool0Target': data["current"]["temps"][0]["tool0"]["target"],
-                    #                 'bedActual': data["current"]["temps"][0]["bed"]["actual"],
-                    #                 'bedTarget': data["current"]["temps"][0]["bed"]["target"]}
-                    pass
-                # self.emit(QtCore.SIGNAL('TEMPERATURES'), temperatures)
+                except Exception as e:
+                    print("error: " + str(e))
 
     def on_open(self,ws):
         self.authenticate()

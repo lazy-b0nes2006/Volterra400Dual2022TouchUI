@@ -40,7 +40,7 @@ Testing:
 # dissable buttons while printing
 '''
 
-ip = '192.168.0.20'     #advanced: 192.168.0.20, extended: 192.168.0.10, pro: 192.168.0.50
+ip = '0.0.0.0'     #advanced: 192.168.0.20, extended: 192.168.0.10, pro: 192.168.0.50
 
 apiKey = 'B508534ED20348F090B4D0AD637D3660'
 file_name = ''
@@ -60,25 +60,20 @@ filaments = [
 
 filaments = OrderedDict(filaments)
 
-calibrationPosition = {}
+calibrationPosition = {
+        'X1': 336, 'Y1': 33,
+        'X2': 27, 'Y2': 33,
+        'X3': 183, 'Y3': 343,
+        'X4': 183, 'Y4': 33
+        }
 
 printerCalibrationPositions = {
-    "Julia Advanced" : {
-        'X1': 42, 'Y1': 21,
-        'X2': 174, 'Y2': 21,
-        'X3': 108, 'Y3': 195
-        },
-    "Julia Extended" : {
-        'X2': 202, 'Y2': 31,
-        'X1': 59, 'Y1': 31,
-        'X3': 131, 'Y3': 233
-    },
-    "Julia Pro Single Nozzle" : {
-        'X1': 371, 'Y1': 42,
-        'X2': 63, 'Y2': 42,
-        'X3': 216, 'Y3': 350,
+    "Volterra" : {
+        'X1': 336, 'Y1': 33,
+        'X2': 27, 'Y2': 33,
+        'X3': 183, 'Y3': 343,
         'X4': 183, 'Y4': 33
-    }
+        }
 }
 
 octopiclient = octoprintAPI(ip, apiKey)

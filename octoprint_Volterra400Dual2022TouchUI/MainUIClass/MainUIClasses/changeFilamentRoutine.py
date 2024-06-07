@@ -20,24 +20,27 @@ class changeFilamentRoutine:
     def unloadFilament(self):
         # Update
         if self.MainUIObj.changeFilamentComboBox.findText("Loaded Filament") == -1:
-            octopiclient.setToolTemperature(
-                filaments[str(self.MainUIObj.changeFilamentComboBox.currentText())])
+            octopiclient.setToolTemperature({"tool1": filaments[str(
+                self.MainUIObj.changeFilamentComboBox.currentText())]}) if self.MainUIObj.activeExtruder == 1 else octopiclient.setToolTemperature(
+                {"tool0": filaments[str(self.MainUIObj.changeFilamentComboBox.currentText())]})
+        
         self.MainUIObj.stackedWidget.setCurrentWidget(self.MainUIObj.changeFilamentProgressPage)
-        self.MainUIObj.changeFilamentStatus.setText("Heating , Please Wait...")
+        self.MainUIObj.changeFilamentStatus.setText("Heating Tool {}, Please Wait...".format(str(self.MainUIObj.activeExtruder)))
         self.MainUIObj.changeFilamentNameOperation.setText("Unloading {}".format(str(self.MainUIObj.changeFilamentComboBox.currentText())))
-        # This flag tells the updateTemperature function that runs every second to update the filament change progress bar as well, and to load or unload after heating done
+        # this flag tells the updateTemperature function that runs every second to update the filament change progress bar as well, and to load or unload after heating done
         self.MainUIObj.changeFilamentHeatingFlag = True
         self.MainUIObj.loadFlag = False
 
     def loadFilament(self):
-        # Update
+        #Update
         if self.MainUIObj.changeFilamentComboBox.findText("Loaded Filament") == -1:
-            octopiclient.setToolTemperature(
-                filaments[str(self.MainUIObj.changeFilamentComboBox.currentText())])
+            octopiclient.setToolTemperature({"tool1": filaments[str(
+                self.MainUIObj.changeFilamentComboBox.currentText())]}) if self.MainUIObj.activeExtruder == 1 else octopiclient.setToolTemperature(
+                {"tool0": filaments[str(self.MainUIObj.changeFilamentComboBox.currentText())]})
         self.MainUIObj.stackedWidget.setCurrentWidget(self.MainUIObj.changeFilamentProgressPage)
-        self.MainUIObj.changeFilamentStatus.setText("Heating , Please Wait...")
+        self.MainUIObj.changeFilamentStatus.setText("Heating Tool {}, Please Wait...".format(str(self.MainUIObj.activeExtruder)))
         self.MainUIObj.changeFilamentNameOperation.setText("Loading {}".format(str(self.MainUIObj.changeFilamentComboBox.currentText())))
-        # This flag tells the updateTemperature function that runs every second to update the filament change progress bar as well, and to load or unload after heating done
+        # this flag tells the updateTemperature function that runs every second to update the filament change progress bar as well, and to load or unload after heating done
         self.MainUIObj.changeFilamentHeatingFlag = True
         self.MainUIObj.loadFlag = True
 
@@ -45,15 +48,16 @@ class changeFilamentRoutine:
         self.MainUIObj.stackedWidget.setCurrentWidget(self.MainUIObj.changeFilamentPage)
         self.MainUIObj.changeFilamentComboBox.clear()
         self.MainUIObj.changeFilamentComboBox.addItems(filaments.keys())
-        # Update
+        #Update
         print(self.MainUIObj.tool0TargetTemperature)
-        if self.MainUIObj.tool0TargetTemperature and self.MainUIObj.printerStatusText in ["Printing", "Paused"]:
+        if self.MainUIObj.tool0TargetTemperature  and self.MainUIObj.printerStatusText in ["Printing","Paused"]:
             self.MainUIObj.changeFilamentComboBox.addItem("Loaded Filament")
             index = self.MainUIObj.changeFilamentComboBox.findText("Loaded Filament")
-            if index >= 0:
+            if index >= 0 :
                 self.MainUIObj.changeFilamentComboBox.setCurrentIndex(index)
 
     def changeFilamentCancel(self):
         self.MainUIObj.changeFilamentHeatingFlag = False
-        self.MainUIObj.coolDownAction()
+        self.MainUIObj.firmwareUpdatePageInstance.firmwareUpdateCheck()
+        self.MainUIObj.controlScreenInstance.coolDownAction()
         self.MainUIObj.controlScreenInstance.control()
