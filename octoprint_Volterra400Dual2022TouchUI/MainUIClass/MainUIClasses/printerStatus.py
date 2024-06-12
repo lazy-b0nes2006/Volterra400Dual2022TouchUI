@@ -197,7 +197,7 @@ class printerStatus:
             self.MainUIObj.changeFilamentButton.setDisabled(True)
             self.MainUIObj.menuCalibrateButton.setDisabled(True)
             self.MainUIObj.menuPrintButton.setDisabled(True)
-            self.doorLockButton.setDisabled(False)
+            self.MainUIObj.doorLockButton.setDisabled(False)
 
             # if not Development:
             #     if not self.__timelapse_enabled:
@@ -210,7 +210,7 @@ class printerStatus:
             self.MainUIObj.changeFilamentButton.setDisabled(False)
             self.MainUIObj.menuCalibrateButton.setDisabled(True)
             self.MainUIObj.menuPrintButton.setDisabled(True)
-            self.doorLockButton.setDisabled(True)
+            self.MainUIObj.doorLockButton.setDisabled(True)
 
         else:
             self.MainUIObj.stopButton.setDisabled(True)
@@ -219,5 +219,5 @@ class printerStatus:
             self.MainUIObj.changeFilamentButton.setDisabled(False)
             self.MainUIObj.menuCalibrateButton.setDisabled(False)
             self.MainUIObj.menuPrintButton.setDisabled(False)
-            self.doorLockButton.setDisabled(True)
+            self.MainUIObj.doorLockButton.setDisabled(True)
 

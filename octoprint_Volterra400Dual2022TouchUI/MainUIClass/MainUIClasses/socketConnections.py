@@ -18,7 +18,6 @@ class socketConnections:
         self.MainUIObj.QtSocket.firmware_updater_signal.connect(self.MainUIObj.firmwareUpdatePageInstance.firmwareUpdateHandler)
         #self.MainUIObj.QtSocket.z_home_offset_signal.connect(self.MainUIObj.calibrationPageInstance.getZHomeOffset)  Deprecated, uses probe offset to set initial height instead
         self.MainUIObj.QtSocket.active_extruder_signal.connect(self.MainUIObj.activeExtruderInstance.setActiveExtruder)
-        self.MainUIObj.QtSocket.z_probing_failed_signal.connect(self.showProbingFailed)
-        self.MainUIObj.QtSocket.tool_offset_signal.connect(self.getToolOffset)
+
 
         

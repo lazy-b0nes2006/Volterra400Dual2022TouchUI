@@ -1,4 +1,4 @@
-from MainUIClass.MainUIClass_def import octopiclient
+from MainUIClass.config import octopiclient
 import dialog
 from PyQt5 import QtGui
 from MainUIClass.config import _fromUtf8

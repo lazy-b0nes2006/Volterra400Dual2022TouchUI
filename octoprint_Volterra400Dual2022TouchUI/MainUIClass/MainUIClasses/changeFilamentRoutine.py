@@ -7,7 +7,7 @@ class changeFilamentRoutine:
 
     def connect(self):
         self.MainUIObj.changeFilamentButton.pressed.connect(self.changeFilament)
-        self.toolToggleChangeFilamentButton.clicked.connect(self.MainUIObj.activeExtruderInstance.selectToolChangeFilament)
+        self.MainUIObj.toolToggleChangeFilamentButton.clicked.connect(self.MainUIObj.activeExtruderInstance.selectToolChangeFilament)
         self.MainUIObj.changeFilamentBackButton.pressed.connect(self.MainUIObj.controlScreenInstance.control)
         self.MainUIObj.changeFilamentBackButton2.pressed.connect(self.changeFilamentCancel)
         self.MainUIObj.changeFilamentUnloadButton.pressed.connect(lambda: self.unloadFilament())

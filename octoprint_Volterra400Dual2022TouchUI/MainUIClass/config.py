@@ -2,7 +2,7 @@ from PyQt5 import QtCore
 from collections import OrderedDict
 from octoprintAPI import octoprintAPI
 
-Development = True   # set to True if running on any system other than RaspberryPi
+Development = False   # set to True if running on any system other than RaspberryPi
 
 # TODO:
 '''
@@ -40,7 +40,7 @@ Testing:
 # dissable buttons while printing
 '''
 
-ip = '0.0.0.0'     #advanced: 192.168.0.20, extended: 192.168.0.10, pro: 192.168.0.50
+ip = '192.168.0.93'     #advanced: 192.168.0.20, extended: 192.168.0.10, pro: 192.168.0.50
 
 apiKey = 'B508534ED20348F090B4D0AD637D3660'
 file_name = ''

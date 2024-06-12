@@ -27,7 +27,7 @@ class MainUIClass(QtWidgets.QMainWindow, mainGUI.Ui_MainWindow):
 
         super(MainUIClass, self).__init__()
 
-        self.printerNameInstance = printerName.printerName(self)
+        # self.printerNameInstance = printerName.printerName(self)
 
         # classes = load_classes('mainUI_classes')
         # globals().update(classes)
@@ -255,7 +255,7 @@ class MainUIClass(QtWidgets.QMainWindow, mainGUI.Ui_MainWindow):
         if not Development:
             self.stackedWidget.setCurrentWidget(self.homePage)
             # self.Lock_showLock()
-            self.wifiSettingsPageInstance.setIPStatus()
+            self.networkingInstance.setIPStatus()
         else:
             self.stackedWidget.setCurrentWidget(self.homePage)
 

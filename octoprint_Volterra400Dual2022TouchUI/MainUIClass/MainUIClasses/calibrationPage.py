@@ -61,7 +61,9 @@ class calibrationPage:
             lambda: self.testPrint(str(self.MainUIObj.testPrintsTool0SizeComboBox.currentText()).replace('.', ''),
                                    str(self.MainUIObj.testPrintsTool1SizeComboBox.currentText()).replace('.', ''), 'singleTest'))
 
-
+        self.MainUIObj.QtSocket.z_probing_failed_signal.connect(self.showProbingFailed)
+        self.MainUIObj.QtSocket.tool_offset_signal.connect(self.getToolOffset)
+        
     def getZHomeOffset(self, offset):
         '''
         Sets the spinbox value to have the value of the Z offset from the printer.
